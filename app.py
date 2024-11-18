@@ -17,32 +17,50 @@ def julie_decrypt(word):
         decrypted_word += chr(new_ascii)
     return decrypted_word
 
-# Streamlit App UI
-st.set_page_config(page_title="Crypto Quadratic Defender", page_icon="🔐", layout="centered")
+# Streamlit App Configuration
+st.set_page_config(page_title="CRYPTO QUADRATIC DEFENDER", page_icon="🔐", layout="centered")
 
-# Title Section
-st.title("Crypto Quadratic Defender")
-st.markdown("""
+# HTML and CSS for Background Video and Styling
+st.markdown(
+    f"""
     <style>
-        .title {
-            font-size: 32px;
-            color: #4CAF50;
-            font-weight: bold;
-            text-align: center;
-        }
-        .subheader {
-            font-size: 24px;
-            color: #FF5722;
-            text-align: center;
-        }
+    body {{
+        background-color: #000;
+        color: white;
+        font-family: 'Arial', sans-serif;
+    }}
+    [data-testid="stAppViewContainer"] {{
+        background: url('https://cdn.pixabay.com/vimeo/204/204306/market-values-stock-exchange-720p.mp4') no-repeat center center fixed;
+        background-size: cover;
+    }}
+    .title {{
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+        margin-top: 20px;
+    }}
+    .subheader {{
+        font-size: 24px;
+        text-align: center;
+        color: white;
+    }}
+    .info {{
+        font-size: 16px;
+        text-align: center;
+        color: white;
+    }}
     </style>
-""", unsafe_allow_html=True)
+    """,
+    unsafe_allow_html=True
+)
 
-st.markdown('<p class="title">Welcome to the Crypto Quadratic Defender</p>', unsafe_allow_html=True)
-st.markdown('<p class="subheader">Encrypt and Decrypt Messages with a Quadratic Twist!</p>', unsafe_allow_html=True)
+# Title and Header Section
+st.markdown('<div class="title">CRYPTO QUADRATIC DEFENDER</div>', unsafe_allow_html=True)
+st.markdown('<div class="subheader">ENCRYPT AND DECRYPT MESSAGES WITH MAXIMUM SECURITY</div>', unsafe_allow_html=True)
 
 # Input Section
-original_word = st.text_input("Enter a word or phrase to encrypt:", "")
+original_word = st.text_input("ENTER A WORD OR PHRASE TO ENCRYPT:", "").upper()
 
 if original_word:
     encrypted_word = julie_encrypt(original_word)
@@ -50,16 +68,22 @@ if original_word:
 
     # Display Results
     st.markdown("---")
-    st.subheader("Results:")
-    
-    # Displaying the words with additional styling
-    st.markdown(f"**Original Word:** `{original_word}`")
-    st.markdown(f"**Encrypted Word:** `{encrypted_word}`")
-    st.markdown(f"**Decrypted Word:** `{decrypted_word}`")
+    st.markdown('<div class="subheader">RESULTS:</div>', unsafe_allow_html=True)
+    st.markdown(f"**ORIGINAL WORD:** `{original_word}`")
+    st.markdown(f"**ENCRYPTED WORD:** `{encrypted_word}`")
+    st.markdown(f"**DECRYPTED WORD:** `{decrypted_word}`")
 
-# Adding some extra information for the user
-st.markdown("""
-    <br>
-    <p style="font-size: 16px; text-align: center;">The encryption technique here is based on modifying each character's ASCII value using the square of the word length.</p>
-    <p style="font-size: 16px; text-align: center;">Feel free to try any string and watch the magic happen!</p>
-""", unsafe_allow_html=True)
+# Credits Section
+st.markdown("---")
+st.markdown(
+    """
+    <div class="info">
+        THIS TOOL IS BASED ON A UNIQUE ENCRYPTION STANDARD DEVELOPED FOR SECURITY PURPOSES.<br>
+        ALL RIGHTS RESERVED.<br><br>
+        <strong>CREDITS:</strong> HARIHARAN M<br>
+        COPYRIGHT 2024<br>
+        CONTACT: 2011.HARIHARAN@GMAIL.COM
+    </div>
+    """,
+    unsafe_allow_html=True
+)
