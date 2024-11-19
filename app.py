@@ -5,14 +5,17 @@ def julie_encrypt(word):
     square_length = len(word) ** 2
     encrypted_word = ""
     for char in word:
+        # Encrypt each character by modifying its ASCII value
         new_ascii = ord(char) + square_length
         encrypted_word += chr(new_ascii)
     return encrypted_word
 
 def julie_decrypt(word):
+    # The word length must match the original encrypted word length for accurate decryption
     square_length = len(word) ** 2
     decrypted_word = ""
     for char in word:
+        # Decrypt by reversing the encryption logic
         new_ascii = ord(char) - square_length
         decrypted_word += chr(new_ascii)
     return decrypted_word
@@ -60,8 +63,13 @@ elif operation == "Decrypt":
     encrypted_word = st.text_area("Enter the encrypted word or phrase:", height=100).upper()
 
     if encrypted_word:
-        decrypted_word = julie_decrypt(encrypted_word)
-        st.markdown(f"### **Decrypted Word:** `{decrypted_word}`")
+        # Decrypt only if the encrypted word has content
+        if encrypted_word:
+            try:
+                decrypted_word = julie_decrypt(encrypted_word)
+                st.markdown(f"### **Decrypted Word:** `{decrypted_word}`")
+            except Exception as e:
+                st.error(f"Error during decryption: {str(e)}")
 
 # Credits and copyright
 st.markdown("<br><p class='small-text'>**CREDITS: Hariharan M** | COPYRIGHT 2024 | 2011.HARIHARAN@GMAIL.COM</p>", unsafe_allow_html=True)
